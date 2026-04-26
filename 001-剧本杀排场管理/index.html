@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧本杀排场管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>剧本杀排场管理</h1>
+            <div class="date-display" id="dateDisplay"></div>
+        </header>
+
+        <main>
+            <section class="add-session-section">
+                <h2>新增场次</h2>
+                <form id="addSessionForm">
+                    <div class="form-group">
+                        <label for="scriptName">剧本名称</label>
+                        <input type="text" id="scriptName" name="scriptName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startTime">开始时间</label>
+                        <input type="datetime-local" id="startTime" name="startTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">预计时长（分钟）</label>
+                        <input type="number" id="duration" name="duration" min="60" max="480" value="180" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="players">人数</label>
+                        <input type="number" id="players" name="players" min="1" max="20" value="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomSelect">选择房间</label>
+                        <select id="roomSelect" name="roomSelect" required></select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">添加场次</button>
+                        <button type="reset" class="btn btn-secondary">重置</button>
+                    </div>
+                </form>
+                <div id="message" class="message"></div>
+            </section>
+
+            <section class="rooms-section">
+                <h2>房间列表</h2>
+                <div id="roomsList" class="rooms-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

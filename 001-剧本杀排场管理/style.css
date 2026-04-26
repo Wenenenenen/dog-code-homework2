@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100%;
+    overflow: hidden;
+    padding: 12px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+header h1 {
+    color: #4a5568;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.date-display {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    main {
+        grid-template-columns: 360px 1fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+section h2 {
+    color: #4a5568;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e0;
+}
+
+.message {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: none;
+}
+
+.message.show {
+    display: block;
+}
+
+.message.success {
+    background-color: #f0fff4;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.message.error {
+    background-color: #fff5f5;
+    color: #742a2a;
+    border: 1px solid #feb2b2;
+}
+
+.message.warning {
+    background-color: #fffaf0;
+    color: #7c2d12;
+    border: 1px solid #fbd38d;
+}
+
+.rooms-section {
+    overflow: hidden;
+}
+
+.rooms-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: minmax(260px, auto);
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    padding-right: 4px;
+}
+
+.rooms-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rooms-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.rooms-container::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 4px;
+}
+
+.rooms-container::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+.room-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-card:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.room-header {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.room-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.room-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.room-capacity {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.room-status {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.room-status.available {
+    background: rgba(72, 187, 120, 0.2);
+    color: #c6f6d5;
+}
+
+.room-status.busy {
+    background: rgba(245, 101, 101, 0.2);
+    color: #fed7d7;
+}
+
+.room-status.has-sessions {
+    background: rgba(237, 137, 54, 0.2);
+    color: #feebc8;
+}
+
+.room-sessions {
+    padding: 8px 12px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-sessions h3 {
+    color: #4a5568;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 18px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e2e8f0;
+}
+
+.session-item {
+    position: relative;
+    background: white;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.session-item:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.session-item::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4299e1;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #4299e1;
+}
+
+.session-item.preparing::before {
+    background: #ed8936;
+    box-shadow: 0 0 0 2px #ed8936;
+}
+
+.session-item.in-progress::before {
+    background: #48bb78;
+    box-shadow: 0 0 0 2px #48bb78;
+}
+
+.session-item.finished::before {
+    background: #718096;
+    box-shadow: 0 0 0 2px #718096;
+}
+
+.session-item.cancelled::before {
+    background: #f56565;
+    box-shadow: 0 0 0 2px #f56565;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.session-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.session-status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.session-status-badge.preparing {
+    background-color: #feebc8;
+    color: #7c2d12;
+}
+
+.session-status-badge.in-progress {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+.session-status-badge.finished {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.session-status-badge.cancelled {
+    background-color: #fed7d7;
+    color: #742a2a;
+    text-decoration: line-through;
+}
+
+.session-info {
+    font-size: 12px;
+    color: #718096;
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.session-info span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.session-actions {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.btn-status {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-status:hover {
+    transform: translateY(-1px);
+}
+
+.btn-status.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.empty-sessions {
+    text-align: center;
+    padding: 24px;
+    color: #a0aec0;
+    font-size: 14px;
+}
